@@ -5,6 +5,6 @@
 	"dockerFile": "../Containerfile",
 	"context": "..",
 	"remoteUser": "devuser",
-	"forwardPorts": [5000],
-	"postCreateCommand": "pip install --user -r requirements.txt"
+	"forwardPorts": [8000],
+	"postCreateCommand": "pip install --user -r app/requirements.txt"
 }

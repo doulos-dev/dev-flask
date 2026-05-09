@@ -1,6 +1,13 @@
 FROM python:3.14-slim
 
-RUN apt-get update && apt-get install -y gcc git curl && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y gcc git curl locales \
+    && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+    && locale-gen \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
 
 RUN useradd -ms /bin/bash devuser
 USER devuser
